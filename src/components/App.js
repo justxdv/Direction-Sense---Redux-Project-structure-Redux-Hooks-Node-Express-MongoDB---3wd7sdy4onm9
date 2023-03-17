@@ -1,26 +1,51 @@
-import React from 'react'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { onNorth, onEast, onSouth, onWest } from '../actions';
 import '../styles/App.css';
-import {useSelector,useDispatch} from "react-redux";
-import { onNorth,onSouth,onEast,onWest } from '../actions/index.js';
+
 const App = () => {
-const direction = useSelector((state)=>state.tellDirection);
-//code here
+  const direction = useSelector((state) => state.tellDirection);
+  const dispatch = useDispatch();
+
+  const handleNorthClick = () => {
+    dispatch(onNorth());
+  };
+
+  const handleEastClick = () => {
+    dispatch(onEast());
+  };
+
+  const handleSouthClick = () => {
+    dispatch(onSouth());
+  };
+
+  const handleWestClick = () => {
+    dispatch(onWest());
+  };
 
   return (
     <div id="main">
-      
-       
-       <h1>Direction Sense  </h1>
-       <div className='styles'><button onClick={} id='north'>N</button></div> 
-        <button onClick={} id='west'>W</button>
-        <input id='input' value={direction}/>
-        <button onClick={} id='east'>E</button><br/>
-        <div className='styles'><button onClick={} id='south'>S</button></div>
-
-
+      <h1>Direction Sense</h1>
+      <div className="styles">
+        <button onClick={handleNorthClick} id="north">
+          N
+        </button>
+      </div>
+      <button onClick={handleWestClick} id="west">
+        W
+      </button>
+      <input id="input" value={direction} />
+      <button onClick={handleEastClick} id="east">
+        E
+      </button>
+      <br />
+      <div className="styles">
+        <button onClick={handleSouthClick} id="south">
+          S
+        </button>
+      </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default App;
